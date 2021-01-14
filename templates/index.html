@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Pets</h1>
+    <div class="container">
+        <div class="row">
+            {% for pet in pets %}
+            <div class="col-3">
+                <img class="img-thumbnail" src="{{ pet.image_url() }}">
+                <div>
+                    <a href="{{ url_for('edit_pet', pet_id=pet.id) }}">{{ pet.name }}</a>
+                    {% if pet.available %} <b> is available!</b>
+                    {% else %}
+                    is not available.
+                    {% endif %}
+                </div>
+            </div>
+            {% else %}
+            <div class="col-12">No pets yet.</div>
+            {% endfor %}
+            <!-- <div class="col-sm">
+                <img src="http://www.cockapooclubgb.co.uk/uploads/9/4/2/9/9429470/801808973.jpg?194"
+                    class="img-thumbnail" alt="Runner">
+                <div>
+                    <a href="#">Runner</a> is available
+                </div>
+            </div>
+            <div class="col-sm">
+                <img src="https://giraffopia.files.wordpress.com/2011/01/mad-cow-2.jpg" class="img-thumbnail"
+                    alt="Mad Cow">
+                <div>
+                    <a href="#">Mad Cow</a> is available
+                </div>
+            </div>
+            <div class="col-sm">
+                <img src="https://www.econspire.com/wp-content/uploads/2012/06/rhino.600-150x150.jpg"
+                    class="img-thumbnail" alt="Puppy">
+                <div>
+                    <a href="#">Zippy</a> is available
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
